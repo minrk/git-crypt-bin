@@ -3,7 +3,11 @@ export GIT_CRYPT_VERSION=${GIT_CRYPT_VERSION:-0.5.0}
 GIT_CRYPT_DIR=${PWD}/git-crypt-${GIT_CRYPT_VERSION}
 GIT_CRYPT=${GIT_CRYPT_DIR}/git-crypt
 
+# handle realpath missing
+which -s realpath &>/dev/null || alias realpath="readlink -f"
+
 TRAVIS_KEY="$(realpath $(dirname $0))/github_deploy_key"
+
 
 if [[ ! -f "${TRAVIS_KEY}" ]]; then
     echo "No ssh key at ${TRAVIS_KEY}, not publishing"
@@ -16,7 +20,7 @@ fi
 set -e
 
 if [[ ! -d builds ]]; then
-    git clone ${GIT_URL} builds -b builds
+    git clone -q ${GIT_URL} builds -b builds
 fi
 cd builds
 git pull
