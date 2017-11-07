@@ -3,10 +3,10 @@ export GIT_CRYPT_VERSION=${GIT_CRYPT_VERSION:-0.5.0}
 GIT_CRYPT_DIR=${PWD}/git-crypt-${GIT_CRYPT_VERSION}
 GIT_CRYPT=${GIT_CRYPT_DIR}/git-crypt
 
-TRAVIS_KEY="$(dirname $0)/github_deploy_key"
+TRAVIS_KEY="$(realpath $(dirname $0))/github_deploy_key"
 
 if [[ ! -f "${TRAVIS_KEY}" ]]; then
-    echo "No ssh key, not publishing"
+    echo "No ssh key at ${TRAVIS_KEY}, not publishing"
     GIT_URL=https://github.com/${TRAVIS_REPO_SLUG}
 else
     export GIT_SSH_COMMAND="ssh -i '${TRAVIS_KEY}'"
