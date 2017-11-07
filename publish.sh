@@ -33,7 +33,16 @@ fi
 
 cp "${GIT_CRYPT}" "${DEST}"
 git add "${DEST}"
-git commit -am "[travis] build git-crypt-${GIT_CRYPT_VERSION}"
+checksum="$(shasum -a 256 "${DEST}")"
+echo "sha256 $checksum"
+
+git commit -am "[travis] build git-crypt-${GIT_CRYPT_VERSION}
+
+sha256:
+$checksum
+"
+git log -1
+
 if [[ -f "${TRAVIS_KEY}" ]]; then
     echo "pushing"
     git push
