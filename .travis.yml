@@ -1,7 +1,7 @@
 language: c
 env:
   global:
-    GIT_CRYPT_VERSION: 0.5.0
+    GIT_CRYPT_VERSION: 0.6.0
 before_install:
   - |
     openssl aes-256-cbc -K $encrypted_8ea1109a207d_key -iv $encrypted_8ea1109a207d_iv -in github_deploy_key.enc -out github_deploy_key -d
