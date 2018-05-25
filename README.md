@@ -6,12 +6,12 @@ Specifically, binaries of git-crypt for use on Travis to avoid the need to recom
 
 sha256 checksum:
 
-46c288cc849c23a28239de3386c6050e5c7d7acd50b1d0248d86e6efff09c61b  git-crypt
+128817a63de17a5af03fe69241e453436c6c286c86dd37fb70ed9b3bf7171d7d  git-crypt
 
 To use:
 
-    curl -L https://github.com/minrk/git-crypt-bin/releases/download/0.5.0/git-crypt > git-crypt
-    echo "46c288cc849c23a28239de3386c6050e5c7d7acd50b1d0248d86e6efff09c61b  git-crypt" | shasum -a 256 -c -
+    curl -L https://github.com/minrk/git-crypt-bin/releases/download/0.6.0/git-crypt > git-crypt
+    echo "128817a63de17a5af03fe69241e453436c6c286c86dd37fb70ed9b3bf7171d7d  git-crypt" | shasum -a 256 -c -
     chmod +x git-crypt
     cp git-crypt /usr/local/bin/
 
